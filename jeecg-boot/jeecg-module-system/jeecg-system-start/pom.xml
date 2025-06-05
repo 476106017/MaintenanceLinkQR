@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jeecg-system-start</artifactId>
-    
+
     <dependencies>
         <!-- SYSTEM 系统管理模块 -->
         <dependency>
@@ -24,7 +24,13 @@
             <artifactId>jeecg-module-demo</artifactId>
             <version>${jeecgboot.version}</version>
         </dependency>
-        
+
+        <!-- DEMO 示例模块 -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>biz-qr</artifactId>
+            <version>${jeecgboot.version}</version>
+        </dependency>
         <!-- flyway 数据库自动升级 -->
         <dependency>
             <groupId>org.flywaydb</groupId>
