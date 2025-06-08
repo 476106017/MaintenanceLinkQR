@@ -37,10 +37,14 @@ public class BizDevice implements Serializable {
 	@TableId(type = IdType.ASSIGN_ID)
     @Schema(description = "id")
     private java.lang.Integer id;
-	/**设备编号（唯一）*/
-	@Excel(name = "设备编号（唯一）", width = 15)
-    @Schema(description = "设备编号（唯一）")
-    private java.lang.String deviceNo;
+	/**设备编号*/
+	@Excel(name = "设备编号", width = 15)
+    @Schema(description = "设备编号")
+    private java.lang.String no;
+	/**设备名*/
+	@Excel(name = "设备名", width = 15)
+    @Schema(description = "设备名")
+    private java.lang.String name;
 	/**生产批次*/
 	@Excel(name = "生产批次", width = 15)
     @Schema(description = "生产批次")
@@ -51,17 +55,17 @@ public class BizDevice implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Schema(description = "生产日期")
     private java.util.Date productionDate;
-	/**生产人员姓名*/
-	@Excel(name = "生产人员姓名", width = 15)
-    @Schema(description = "生产人员姓名")
+	/**生产人员*/
+	@Excel(name = "生产人员", width = 15)
+    @Schema(description = "生产人员")
     private java.lang.String productionPerson;
-	/**维保联系电话*/
-	@Excel(name = "维保联系电话", width = 15)
-    @Schema(description = "维保联系电话")
-    private java.lang.String maintenanceTel;
-	/**生产图纸 PDF 存储路径*/
-	@Excel(name = "生产图纸 PDF 存储路径", width = 15)
-    @Schema(description = "生产图纸 PDF 存储路径")
+	/**设备照片*/
+	@Excel(name = "设备照片", width = 15)
+    @Schema(description = "设备照片")
+    private java.lang.String picture;
+	/**生产图纸*/
+	@Excel(name = "生产图纸", width = 15)
+    @Schema(description = "生产图纸")
     private java.lang.String drawingPdfUrl;
 	/**出货状态*/
 	@Excel(name = "出货状态", width = 15, dicCode = "qr-status")
@@ -78,4 +82,14 @@ public class BizDevice implements Serializable {
 	@Excel(name = "出货去向", width = 15)
     @Schema(description = "出货去向")
     private java.lang.String shippedTo;
+	/**创建时间*/
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Schema(description = "创建时间")
+    private java.util.Date createTime;
+	/**更新时间*/
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Schema(description = "更新时间")
+    private java.util.Date updateTime;
 }

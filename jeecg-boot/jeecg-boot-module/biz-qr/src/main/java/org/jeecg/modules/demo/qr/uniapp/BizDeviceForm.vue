@@ -10,8 +10,14 @@
 			<form>
               <view class="cu-form-group">
                 <view class="flex align-center">
-                  <view class="title"><text space="ensp">设备编号（唯一）：</text></view>
-                  <input  placeholder="请输入设备编号（唯一）" v-model="model.deviceNo"/>
+                  <view class="title"><text space="ensp">设备编号：</text></view>
+                  <input  placeholder="请输入设备编号" v-model="model.no"/>
+                </view>
+              </view>
+              <view class="cu-form-group">
+                <view class="flex align-center">
+                  <view class="title"><text space="ensp">设备名：</text></view>
+                  <input  placeholder="请输入设备名" v-model="model.name"/>
                 </view>
               </view>
               <view class="cu-form-group">
@@ -23,20 +29,20 @@
               <my-date label="生产日期：" v-model="model.productionDate" placeholder="请输入生产日期"></my-date>
               <view class="cu-form-group">
                 <view class="flex align-center">
-                  <view class="title"><text space="ensp">生产人员姓名：</text></view>
-                  <input  placeholder="请输入生产人员姓名" v-model="model.productionPerson"/>
+                  <view class="title"><text space="ensp">生产人员：</text></view>
+                  <input  placeholder="请输入生产人员" v-model="model.productionPerson"/>
                 </view>
               </view>
               <view class="cu-form-group">
                 <view class="flex align-center">
-                  <view class="title"><text space="ensp">维保联系电话：</text></view>
-                  <input  placeholder="请输入维保联系电话" v-model="model.maintenanceTel"/>
+                  <view class="title"><text space="ensp">设备照片：</text></view>
+                  <input  placeholder="请输入设备照片" v-model="model.picture"/>
                 </view>
               </view>
               <view class="cu-form-group">
                 <view class="flex align-center">
-                  <view class="title"><text space="ensp">生产图纸 PDF 存储路径：</text></view>
-                  <input  placeholder="请输入生产图纸 PDF 存储路径" v-model="model.drawingPdfUrl"/>
+                  <view class="title"><text space="ensp">生产图纸：</text></view>
+                  <input  placeholder="请输入生产图纸" v-model="model.drawingPdfUrl"/>
                 </view>
               </view>
               <view class="cu-form-group">
@@ -52,6 +58,8 @@
                   <input  placeholder="请输入出货去向" v-model="model.shippedTo"/>
                 </view>
               </view>
+              <my-date label="创建时间：" fields="day" v-model="model.createTime" placeholder="请输入创建时间"></my-date>
+              <my-date label="更新时间：" fields="day" v-model="model.updateTime" placeholder="请输入更新时间"></my-date>
 				<view class="padding">
 					<button class="cu-btn block bg-blue margin-tb-sm lg" @click="onSubmit">
 						<text v-if="loading" class="cuIcon-loading2 cuIconfont-spin"></text>提交

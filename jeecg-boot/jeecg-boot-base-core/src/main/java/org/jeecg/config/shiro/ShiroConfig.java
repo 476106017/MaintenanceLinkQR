@@ -56,7 +56,7 @@ public class ShiroConfig {
     private JeecgBaseConfig jeecgBaseConfig;
     @Autowired(required = false)
     private RedisProperties redisProperties;
-    
+
     /**
      * Filter Chain定义说明
      *
@@ -83,6 +83,9 @@ public class ShiroConfig {
         }
 
         // 配置不会被拦截的链接 顺序判断
+        filterChainDefinitionMap.put("/qr/bizDevice/queryById", "anon");
+        filterChainDefinitionMap.put("/sys/dict/getDictItems/**", "anon");
+
         filterChainDefinitionMap.put("/sys/cas/client/validateLogin", "anon"); //cas验证登录
         filterChainDefinitionMap.put("/sys/randomImage/**", "anon"); //登录验证码接口排除
         filterChainDefinitionMap.put("/sys/checkCaptcha", "anon"); //登录验证码接口排除
@@ -144,7 +147,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/jmreport/**", "anon");
         filterChainDefinitionMap.put("/**/*.js.map", "anon");
         filterChainDefinitionMap.put("/**/*.css.map", "anon");
-        
+
         //积木BI大屏和仪表盘排除
         filterChainDefinitionMap.put("/drag/view", "anon");
         filterChainDefinitionMap.put("/drag/page/queryById", "anon");
@@ -298,7 +301,7 @@ public class ShiroConfig {
     /**
      * RedisConfig在项目starter项目中
      * jeecg-boot-starter-github\jeecg-boot-common\src\main\java\org\jeecg\common\modules\redis\config\RedisConfig.java
-     * 
+     *
      * 配置shiro redisManager
      * 使用的是shiro-redis开源插件
      *
