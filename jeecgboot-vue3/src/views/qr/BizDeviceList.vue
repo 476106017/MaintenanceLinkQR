@@ -25,7 +25,7 @@
       </template>
        <!--操作栏-->
       <template #action="{ record }">
-        <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
+        <TableAction :actions="getTableAction(record)" />
       </template>
       <!--字段回显插槽-->
       <template v-slot:bodyCell="{ column, record, index, text }">
@@ -82,7 +82,7 @@
               ],
             },
            actionColumn: {
-               width: 120,
+               width: 220,
                fixed:'right'
             },
             beforeFetch: (params) => {
@@ -174,24 +174,19 @@
   function getTableAction(record){
        return [
          {
+           label: '详情',
+           onClick: handleDetail.bind(null, record),
+         },
+         {
+           label: '打印',
+           onClick: handlePrint.bind(null, record),
+         },
+         {
            label: '编辑',
            onClick: handleEdit.bind(null, record),
            auth: 'qr:biz_device:edit'
-         }
-       ]
-   }
-     /**
-        * 下拉操作栏
-        */
-  function getDropDownAction(record){
-       return [
+         },
          {
-           label: '详情',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '打印',
-           onClick: handlePrint.bind(null, record),
-         }, {
            label: '删除',
            popConfirm: {
              title: '是否确认删除',
