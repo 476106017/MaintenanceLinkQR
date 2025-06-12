@@ -38,6 +38,7 @@
     </BasicTable>
     <!-- 表单区域 -->
     <BizDeviceModal @register="registerModal" @success="handleSuccess"></BizDeviceModal>
+    <QrPrintModal @register="registerPrintModal" />
   </div>
 </template>
 
@@ -47,6 +48,8 @@
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
   import BizDeviceModal from './components/BizDeviceModal.vue'
+  import QrPrintModal from './components/QrPrintModal.vue'
+  import { QR_PAGE_DOMAIN } from '/@/settings/siteSetting';
   import {columns, searchFormSchema, superQuerySchema} from './BizDevice.data';
   import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './BizDevice.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
@@ -56,6 +59,7 @@
   const userStore = useUserStore();
   //注册model
   const [registerModal, {openModal}] = useModal();
+  const [registerPrintModal, { openModal: openPrintModal }] = useModal();
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
       tableProps:{
@@ -138,10 +142,17 @@
        isUpdate: true,
        showFooter: false,
      });
-   }
-   /**
-    * 删除事件
-    */
+  }
+  /**
+   * 打印二维码
+   */
+  function handlePrint(record: Recordable) {
+     const url = `${QR_PAGE_DOMAIN}/#/pages/qr/BizDeviceView?dataId=${record.id}`;
+     openPrintModal(true, { url });
+  }
+  /**
+   * 删除事件
+   */
   async function handleDelete(record) {
      await deleteOne({id: record.id}, handleSuccess);
    }
@@ -177,6 +188,9 @@
          {
            label: '详情',
            onClick: handleDetail.bind(null, record),
+         }, {
+           label: '打印',
+           onClick: handlePrint.bind(null, record),
          }, {
            label: '删除',
            popConfirm: {

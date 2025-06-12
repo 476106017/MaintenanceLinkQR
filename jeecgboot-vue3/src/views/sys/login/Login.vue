@@ -26,10 +26,6 @@
             class="relative w-full px-5 py-8 mx-auto my-auto rounded-md shadow-md xl:ml-16 xl:bg-transparent sm:px-8 xl:p-4 xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto enter-x"
           >
             <LoginForm />
-            <ForgetPasswordForm />
-            <RegisterForm />
-            <MobileForm />
-            <QrCodeForm />
           </div>
         </div>
       </div>
@@ -41,15 +37,10 @@
   import { AppLogo } from '/@/components/Application';
   import { AppLocalePicker, AppDarkModeToggle } from '/@/components/Application';
   import LoginForm from './LoginForm.vue';
-  import ForgetPasswordForm from './ForgetPasswordForm.vue';
-  import RegisterForm from './RegisterForm.vue';
-  import MobileForm from './MobileForm.vue';
-  import QrCodeForm from './QrCodeForm.vue';
   import { useGlobSetting } from '/@/hooks/setting';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useLocaleStore } from '/@/store/modules/locale';
-  import { useLoginState, LoginStateEnum } from './useLogin';
   defineProps({
     sessionTimeout: {
       type: Boolean,
@@ -62,8 +53,6 @@
   const localeStore = useLocaleStore();
   const showLocale = localeStore.getShowPicker;
   const title = computed(() => globSetting?.title ?? '');
-  const { handleBackLogin } = useLoginState();
-  handleBackLogin();
 </script>
 <style lang="less">
   @prefix-cls: ~'@{namespace}-login';
@@ -164,17 +153,6 @@
       }
     }
 
-    &-sign-in-way {
-      .anticon {
-        font-size: 22px;
-        color: #888;
-        cursor: pointer;
-
-        &:hover {
-          color: @primary-color;
-        }
-      }
-    }
 
     input:not([type='checkbox']) {
       min-width: 360px;
