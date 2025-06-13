@@ -8,10 +8,9 @@
 
     <div class="container relative h-full py-2 mx-auto sm:px-10">
       <div class="flex h-full">
-        <div class="hidden min-h-full pl-4 mr-4 xl:flex xl:flex-col xl:w-6/12">
+        <div class="hidden min-h-full pl-4 mr-4 xl:flex xl:flex-col xl:w-5/12">
           <AppLogo class="-enter-x" />
           <div class="my-auto">
-            <img :alt="title" src="../../../assets/svg/login-box-bg.svg" class="w-1/2 -mt-16 -enter-x" />
             <div class="mt-10 font-medium text-white -enter-x">
               <span class="inline-block mt-4 text-3xl"> {{ t('sys.login.signInTitle') }}</span>
             </div>
@@ -19,6 +18,8 @@
               {{ t('sys.login.signInDesc') }}
             </div>
           </div>
+        </div>
+        <div class="hidden min-h-full pl-4 mr-4 xl:flex xl:flex-col xl:w-1/12">
         </div>
         <div class="flex w-full h-full py-5 xl:h-auto xl:py-0 xl:my-0 xl:w-6/12">
           <div
@@ -132,7 +133,8 @@
       }
 
       img {
-        width: 32px;
+        width: 96px;
+        margin-top: 96px;
       }
     }
 
@@ -148,7 +150,8 @@
         }
 
         img {
-          width: 48px;
+          width: 96px;
+          margin-top: 96px;
         }
       }
     }
