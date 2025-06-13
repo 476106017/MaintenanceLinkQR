@@ -67,8 +67,8 @@ export default {
     signUpFormTitle: '注册',
     forgetFormTitle: '重置密码',
 
-    signInTitle: 'Jeecg Boot',
-    signInDesc: '是中国最具影响力的 企业级低代码平台！在线开发，可视化拖拽设计，零代码实现80%的基础功能~',
+    signInTitle: '鑫宏太设备管理系统',
+    signInDesc: '鑫宏太电气是一家专业从事高低压电气成套设备研发、设计、生产、安装、调试及工程施工的科技型企业，主要生产箱式变压器、高低压配电柜等电气产品，拥有专利43项，是国家高新技术企业、中国招投标碳中和承诺示范单位，武汉市科技“小巨人”企业。',
     policy: '我同意敲敲云隐私政策',
     scanSign: `扫码后，即可完成登录`,
     scanSuccess: `扫码成功，登录中`,

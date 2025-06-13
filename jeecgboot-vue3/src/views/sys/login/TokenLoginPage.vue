@@ -5,7 +5,7 @@
             <div class="app-loading-dots">
                 <span class="dot dot-spin"><i></i><i></i><i></i><i></i></span>
             </div>
-            <div class="app-loading-title">JeecgBoot 企业级低代码平台</div>
+            <div class="app-loading-title">{{ title }}</div>
         </div>
     </div>
 </template>
@@ -23,6 +23,7 @@
   export default {
     name: "TokenLogin",
     setup(){
+      const title = import.meta.env.VITE_GLOB_APP_TITLE;
       const route = useRoute();
       let router = useRouter();
       const {createMessage, notification} = useMessage()
@@ -83,6 +84,7 @@
           });
         }
       }
+      return { title };
     }
   }
 </script>
