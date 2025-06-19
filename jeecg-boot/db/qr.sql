@@ -27,15 +27,17 @@ VALUES ('2025060608578510116', '2025060608578510110', '导入excel_设备二维�
 
 CREATE TABLE `biz_device` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `device_no` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '设备编号（唯一）',
+  `no` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '设备编号',
   `production_batch` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '生产批次',
   `production_date` datetime DEFAULT NULL COMMENT '生产日期',
-  `production_person` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '生产人员姓名',
-  `maintenance_tel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '维保联系电话',
-  `drawing_pdf_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '生产图纸 PDF 存储路径',
-  `status` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '出货状态',
+  `production_person` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '生产人员',
+  `drawing_pdf_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '生产图纸',
+  `status` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出货状态',
   `shipped_date` datetime DEFAULT NULL COMMENT '出货日期',
   `shipped_to` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出货去向',
-  PRIMARY KEY (`id`),
-  KEY `device_no_idx` (`device_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `create_time` date DEFAULT NULL COMMENT '创建时间',
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '设备照片',
+  `update_time` date DEFAULT NULL COMMENT '更新时间',
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '设备名',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1930577194650525698 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci

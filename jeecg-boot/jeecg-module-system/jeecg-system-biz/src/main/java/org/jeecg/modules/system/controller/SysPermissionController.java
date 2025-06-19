@@ -67,7 +67,7 @@ public class SysPermissionController {
 
 	@Autowired
 	private ISysRoleIndexService sysRoleIndexService;
-	
+
 	@Autowired
 	private ShiroRealm shiroRealm;
 
@@ -90,7 +90,7 @@ public class SysPermissionController {
 			LambdaQueryWrapper<SysPermission> query = new LambdaQueryWrapper<SysPermission>();
 			query.eq(SysPermission::getDelFlag, CommonConstant.DEL_FLAG_0);
 			query.orderByAsc(SysPermission::getSortNo);
-			
+
 			//支持通过菜单名字，模糊查询
 			if(oConvertUtils.isNotEmpty(sysPermission.getName())){
 				query.like(SysPermission::getName, sysPermission.getName());
@@ -214,7 +214,7 @@ public class SysPermissionController {
 
 //	/**
 //	 * 查询用户拥有的菜单权限和按钮权限（根据用户账号）
-//	 * 
+//	 *
 //	 * @return
 //	 */
 //	@RequestMapping(value = "/queryByUser", method = RequestMethod.GET)
@@ -256,33 +256,32 @@ public class SysPermissionController {
 			//update-begin--Author:zyf Date:20220425  for:自定义首页地址 LOWCOD-1578
 			String version = request.getHeader(CommonConstant.VERSION);
 			SysRoleIndex defIndexCfg = sysUserService.getDynamicIndexByUserRole(loginUser.getUsername(), version);
-			if (defIndexCfg == null) {
-				defIndexCfg = sysRoleIndexService.initDefaultIndex();
-			}
+			if (defIndexCfg != null) {
 			//update-end--Author:zyf  Date:20220425  for：自定义首页地址 LOWCOD-1578
 
-			// 如果没有授权角色首页，则自动添加首页路由
-			if (!PermissionDataUtil.hasIndexPage(metaList, defIndexCfg)) {
-				LambdaQueryWrapper<SysPermission> indexQueryWrapper = new LambdaQueryWrapper<>();
-				indexQueryWrapper.eq(SysPermission::getUrl, defIndexCfg.getUrl());
-				SysPermission indexMenu = sysPermissionService.getOne(indexQueryWrapper);
-				if (indexMenu == null) {
-					indexMenu = new SysPermission();
-					indexMenu.setUrl(defIndexCfg.getUrl());
-					indexMenu.setComponent(defIndexCfg.getComponent());
-					indexMenu.setRoute(defIndexCfg.isRoute());
-					indexMenu.setName(DefIndexConst.DEF_INDEX_NAME);
-					indexMenu.setMenuType(0);
+				// 如果没有授权角色首页，则自动添加首页路由
+				if (!PermissionDataUtil.hasIndexPage(metaList, defIndexCfg)) {
+					LambdaQueryWrapper<SysPermission> indexQueryWrapper = new LambdaQueryWrapper<>();
+					indexQueryWrapper.eq(SysPermission::getUrl, defIndexCfg.getUrl());
+					SysPermission indexMenu = sysPermissionService.getOne(indexQueryWrapper);
+					if (indexMenu == null) {
+						indexMenu = new SysPermission();
+						indexMenu.setUrl(defIndexCfg.getUrl());
+						indexMenu.setComponent(defIndexCfg.getComponent());
+						indexMenu.setRoute(defIndexCfg.isRoute());
+						indexMenu.setName(DefIndexConst.DEF_INDEX_NAME);
+						indexMenu.setMenuType(0);
+					}
+					// 如果没有授权一级菜单，则自身变为一级菜单
+					if (indexMenu.getParentId() != null && !PermissionDataUtil.hasMenuById(metaList, indexMenu.getParentId())) {
+						indexMenu.setMenuType(0);
+						indexMenu.setParentId(null);
+					}
+					if (oConvertUtils.isEmpty(indexMenu.getIcon())) {
+						indexMenu.setIcon("ant-design:home");
+					}
+					metaList.add(0, indexMenu);
 				}
-				// 如果没有授权一级菜单，则自身变为一级菜单
-				if (indexMenu.getParentId() != null && !PermissionDataUtil.hasMenuById(metaList, indexMenu.getParentId())) {
-					indexMenu.setMenuType(0);
-					indexMenu.setParentId(null);
-				}
-				if (oConvertUtils.isEmpty(indexMenu.getIcon())) {
-					indexMenu.setIcon("ant-design:home");
-				}
-				metaList.add(0, indexMenu);
 			}
 			//update-end-author:taoyan date:20200211 for: TASK #3368 【路由缓存】首页的缓存设置有问题，需要根据后台的路由配置来实现是否缓存
 
@@ -341,7 +340,7 @@ public class SysPermissionController {
 			json.put("sysSafeMode", jeecgBaseConfig.getFirewall()!=null? jeecgBaseConfig.getFirewall().getDataSourceSafe(): false);
 			result.setResult(json);
 		} catch (Exception e) {
-			result.error500("查询失败:" + e.getMessage());  
+			result.error500("查询失败:" + e.getMessage());
 			log.error(e.getMessage(), e);
 		}
 		return result;
