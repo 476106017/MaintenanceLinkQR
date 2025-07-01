@@ -82,8 +82,6 @@ public class ShiroConfig {
             }
         }
 
-        // 配置不会被拦截的链接 顺序判断
-        filterChainDefinitionMap.put("/qr/bizDevice/queryById", "anon");
         filterChainDefinitionMap.put("/sys/dict/getDictItems/**", "anon");
 
         filterChainDefinitionMap.put("/sys/cas/client/validateLogin", "anon"); //cas验证登录
