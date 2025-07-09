@@ -3,7 +3,7 @@ import type { GlobEnvConfig } from '/#/config';
 import { warn } from '/@/utils/log';
 import pkg from '../../package.json';
 import { getConfigFileName } from '../../build/getConfigFileName';
-import { getGlobal } from "@/qiankun/micro";
+import { getGlobal } from '@/qiankun/micro';
 
 export function getCommonStoragePrefix() {
   const { VITE_GLOB_APP_SHORT_NAME } = getAppEnvConfig();
@@ -40,6 +40,7 @@ export function getAppEnvConfig() {
     VITE_GLOB_DOC_URL,
     VITE_GLOB_SITE_URL,
     VITE_GLOB_QR_PAGE_DOMAIN,
+    VITE_GLOB_QR_PREFIX,
     // 全局隐藏哪些布局，多个用逗号隔开
     VITE_GLOB_HIDE_LAYOUT_TYPES,
 
@@ -69,6 +70,7 @@ export function getAppEnvConfig() {
     VITE_GLOB_DOC_URL,
     VITE_GLOB_SITE_URL,
     VITE_GLOB_QR_PAGE_DOMAIN,
+    VITE_GLOB_QR_PREFIX,
     VITE_GLOB_HIDE_LAYOUT_TYPES,
 
     // 【JEECG作为乾坤子应用】
@@ -115,7 +117,7 @@ export function isProdMode(): boolean {
 }
 
 export function getHideLayoutTypes(): string[] {
-  const {VITE_GLOB_HIDE_LAYOUT_TYPES} = getAppEnvConfig();
+  const { VITE_GLOB_HIDE_LAYOUT_TYPES } = getAppEnvConfig();
   if (typeof VITE_GLOB_HIDE_LAYOUT_TYPES !== 'string') {
     return [];
   }

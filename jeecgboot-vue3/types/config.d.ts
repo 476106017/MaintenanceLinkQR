@@ -165,6 +165,8 @@ export interface GlobConfig {
 
   // qr page domain
   qrPageDomain?: string;
+  // qr code prefix
+  qrPrefix?: string;
 
   // 【JEECG作为乾坤子应用】是否以乾坤子应用模式启动
   isQiankunMicro: boolean;
@@ -196,6 +198,7 @@ export interface GlobEnvConfig {
   VITE_GLOB_DOC_URL?: string;
   VITE_GLOB_SITE_URL?: string;
   VITE_GLOB_QR_PAGE_DOMAIN?: string;
+  VITE_GLOB_QR_PREFIX?: string;
   // 全局隐藏哪些布局，多个用逗号隔开
   VITE_GLOB_HIDE_LAYOUT_TYPES?: string;
 
