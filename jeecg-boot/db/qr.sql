@@ -41,3 +41,7 @@ CREATE TABLE `biz_device` (
   `name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '设备名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1930577194650525698 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+
+ALTER TABLE `jeecg-boot`.`biz_device`
+ADD COLUMN `category` VARCHAR(45) NULL AFTER `id`;
+
