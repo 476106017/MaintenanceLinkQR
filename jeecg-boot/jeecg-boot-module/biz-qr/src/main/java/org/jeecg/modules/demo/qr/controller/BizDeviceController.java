@@ -52,7 +52,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceService> {
 	@Autowired
 	private IBizDeviceService bizDeviceService;
-	
+
 	/**
 	 * 分页列表查询
 	 *
@@ -78,7 +78,7 @@ public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceSe
 		IPage<BizDevice> pageList = bizDeviceService.page(page, queryWrapper);
 		return Result.OK(pageList);
 	}
-	
+
 	/**
 	 *   添加
 	 *
@@ -93,7 +93,7 @@ public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceSe
 		bizDeviceService.save(bizDevice);
 		return Result.OK("添加成功！");
 	}
-	
+
 	/**
 	 *  编辑
 	 *
@@ -108,7 +108,7 @@ public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceSe
 		bizDeviceService.updateById(bizDevice);
 		return Result.OK("编辑成功!");
 	}
-	
+
 	/**
 	 *   通过id删除
 	 *
@@ -123,7 +123,7 @@ public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceSe
 		bizDeviceService.removeById(id);
 		return Result.OK("删除成功!");
 	}
-	
+
 	/**
 	 *  批量删除
 	 *
@@ -138,7 +138,7 @@ public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceSe
 		this.bizDeviceService.removeByIds(Arrays.asList(ids.split(",")));
 		return Result.OK("批量删除成功!");
 	}
-	
+
 	/**
 	 * 通过id查询
 	 *
@@ -161,7 +161,7 @@ public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceSe
          * @return
          */
         @GetMapping(value = "/categories")
-        public Result<List<String>> queryCategories() {
+        public Result<List<Map<String ,String >>> queryCategories() {
                 return Result.OK(bizDeviceService.queryAllCategories());
         }
 
