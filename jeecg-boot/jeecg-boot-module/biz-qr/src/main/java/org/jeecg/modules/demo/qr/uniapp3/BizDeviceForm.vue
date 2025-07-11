@@ -18,12 +18,12 @@ navigationBarTitleText: '设备二维码管理',
               <wd-input
                   label-width="100px"
                   v-model="myFormData['no']"
-                  :label="get4Label('设备编号')"
+                  :label="get4Label('生产编号')"
                   name='no'
                   prop='no'
-                  placeholder="请选择设备编号"
+                  placeholder="请选择生产编号"
                   :rules="[
-                                  { required: true, message: '请输入设备编号!'},
+                                  { required: true, message: '请输入生产编号!'},
                   ]"
                   clearable
               />
@@ -32,10 +32,10 @@ navigationBarTitleText: '设备二维码管理',
               <wd-input
                   label-width="100px"
                   v-model="myFormData['name']"
-                  :label="get4Label('设备名')"
+                  :label="get4Label('设备名称')"
                   name='name'
                   prop='name'
-                  placeholder="请选择设备名"
+                  placeholder="请选择设备名称"
                   :rules="[
                   ]"
                   clearable
@@ -45,10 +45,10 @@ navigationBarTitleText: '设备二维码管理',
               <wd-input
                   label-width="100px"
                   v-model="myFormData['productionBatch']"
-                  :label="get4Label('生产批次')"
+                  :label="get4Label('出厂编号')"
                   name='productionBatch'
                   prop='productionBatch'
-                  placeholder="请选择生产批次"
+                  placeholder="请选择出厂编号"
                   :rules="[
                   ]"
                   clearable

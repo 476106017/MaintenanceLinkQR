@@ -10,20 +10,20 @@
 			<form>
               <view class="cu-form-group">
                 <view class="flex align-center">
-                  <view class="title"><text space="ensp">设备编号：</text></view>
-                  <input  placeholder="请输入设备编号" v-model="model.no"/>
+                  <view class="title"><text space="ensp">生产编号：</text></view>
+                  <input  placeholder="请输入生产编号" v-model="model.no"/>
                 </view>
               </view>
               <view class="cu-form-group">
                 <view class="flex align-center">
-                  <view class="title"><text space="ensp">设备名：</text></view>
-                  <input  placeholder="请输入设备名" v-model="model.name"/>
+                  <view class="title"><text space="ensp">设备名称：</text></view>
+                  <input  placeholder="请输入设备名称" v-model="model.name"/>
                 </view>
               </view>
               <view class="cu-form-group">
                 <view class="flex align-center">
-                  <view class="title"><text space="ensp">生产批次：</text></view>
-                  <input  placeholder="请输入生产批次" v-model="model.productionBatch"/>
+                  <view class="title"><text space="ensp">出厂编号：</text></view>
+                  <input  placeholder="请输入出厂编号" v-model="model.productionBatch"/>
                 </view>
               </view>
               <my-date label="生产日期：" v-model="model.productionDate" placeholder="请输入生产日期"></my-date>

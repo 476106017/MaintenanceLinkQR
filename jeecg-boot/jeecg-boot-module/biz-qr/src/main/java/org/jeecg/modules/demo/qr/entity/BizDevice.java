@@ -33,21 +33,25 @@ import lombok.experimental.Accessors;
 public class BizDevice implements Serializable {
     private static final long serialVersionUID = 1L;
 
-	/**id*/
-	@TableId(type = IdType.ASSIGN_ID)
+        /**id*/
+        @TableId(type = IdType.ASSIGN_ID)
     @Schema(description = "id")
     private java.lang.Integer id;
-	/**设备编号*/
-	@Excel(name = "设备编号", width = 15)
-    @Schema(description = "设备编号")
+        /**目录*/
+        @Excel(name = "目录", width = 15)
+    @Schema(description = "目录")
+    private java.lang.String category;
+        /**生产编号*/
+	@Excel(name = "生产编号", width = 15)
+    @Schema(description = "生产编号")
     private java.lang.String no;
-	/**设备名*/
-	@Excel(name = "设备名", width = 15)
-    @Schema(description = "设备名")
+	/**设备名称*/
+	@Excel(name = "设备名称", width = 15)
+    @Schema(description = "设备名称")
     private java.lang.String name;
-	/**生产批次*/
-	@Excel(name = "生产批次", width = 15)
-    @Schema(description = "生产批次")
+	/**出厂编号*/
+	@Excel(name = "出厂编号", width = 15)
+    @Schema(description = "出厂编号")
     private java.lang.String productionBatch;
 	/**生产日期*/
 	@Excel(name = "生产日期", width = 20, format = "yyyy-MM-dd HH:mm:ss")

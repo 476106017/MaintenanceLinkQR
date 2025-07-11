@@ -74,6 +74,7 @@ JeecgBoot 是一个开源低代码开发平台，支持全信创环境。它兼�
 - 官方网站：  [http://www.jeecg.com](http://www.jeecg.com)
 - 在线演示 ：  [平台演示](http://boot3.jeecg.com)   | [APP演示](http://jeecg.com/appIndex) | [体验低代码](https://jeecg.blog.csdn.net/article/details/106079007) | [体验零代码](https://app.qiaoqiaoyun.com/myapps/index)
 - 开发文档：  [文档中心](https://help.jeecg.com) | [AIGC大模块](https://help.jeecg.com/aigc)
+- 白标处理： [参考文档](docs/white-label.md)
 - 新手指南： [快速入门](http://www.jeecg.com/doc/quickstart) | [入门视频](http://jeecg.com/doc/video) | [反馈问题](https://github.com/jeecgboot/JeecgBoot/issues/new?template=bug_report.md)
 - QQ交流群 ： ⑩716488839、⑨808791225(满)、其他(满)
 

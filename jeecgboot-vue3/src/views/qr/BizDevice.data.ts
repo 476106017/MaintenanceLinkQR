@@ -3,20 +3,26 @@ import {FormSchema} from '/@/components/Table';
 import { rules} from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
 import { getWeekMonthQuarterYear } from '/@/utils';
+import { loadCategories } from './BizDevice.api';
 //列表数据
 export const columns: BasicColumn[] = [
+  {
+   title: '目录',
+   align:"center",
+   dataIndex: 'category'
+  },
    {
-    title: '设备编号',
+    title: '生产编号',
     align:"center",
     dataIndex: 'no'
    },
    {
-    title: '设备名',
+    title: '设备名称',
     align:"center",
     dataIndex: 'name'
    },
    {
-    title: '生产批次',
+    title: '出厂编号',
     align:"center",
     dataIndex: 'productionBatch'
    },
@@ -78,18 +84,28 @@ export const columns: BasicColumn[] = [
 //查询数据
 export const searchFormSchema: FormSchema[] = [
   {
-    label: "设备编号",
+    label: "目录",
+    field: "category",
+    component: 'ApiSelect',
+    componentProps: {
+        api: loadCategories,
+        labelField: 'category',
+        valueField: 'category'
+    },
+  },
+  {
+    label: "生产编号",
     field: "no",
     component: 'JInput',
   },
 	{
-      label: "设备名",
+      label: "设备名称",
       field: 'name',
       component: 'Input',
       //colProps: {span: 6},
  	},
   {
-    label: "生产批次",
+    label: "出厂编号",
     field: "productionBatch",
     component: 'JInput',
   },
@@ -149,22 +165,27 @@ export const searchFormSchema: FormSchema[] = [
 //表单数据
 export const formSchema: FormSchema[] = [
   {
-    label: '设备编号',
+    label: '目录',
+    field: 'category',
+    component: 'Input',
+  },
+  {
+    label: '生产编号',
     field: 'no',
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入设备编号!'},
+                 { required: true, message: '请输入生产编号!'},
           ];
      },
   },
   {
-    label: '设备名',
+    label: '设备名称',
     field: 'name',
     component: 'Input',
   },
   {
-    label: '生产批次',
+    label: '出厂编号',
     field: 'productionBatch',
     component: 'Input',
   },
@@ -235,18 +256,19 @@ export const formSchema: FormSchema[] = [
 
 // 高级查询数据
 export const superQuerySchema = {
-  no: {title: '设备编号',order: 0,view: 'text', type: 'string',},
-  name: {title: '设备名',order: 1,view: 'text', type: 'string',},
-  productionBatch: {title: '生产批次',order: 2,view: 'text', type: 'string',},
-  productionDate: {title: '生产日期',order: 3,view: 'datetime', type: 'string',},
-  productionPerson: {title: '生产人员',order: 4,view: 'text', type: 'string',},
-  picture: {title: '设备照片',order: 5,view: 'image', type: 'string',},
-  drawingPdfUrl: {title: '生产图纸',order: 6,view: 'file', type: 'string',},
-  status: {title: '出货状态',order: 7,view: 'list', type: 'string',dictCode: 'qr-status',},
-  shippedDate: {title: '出货日期',order: 8,view: 'datetime', type: 'string',},
-  shippedTo: {title: '出货去向',order: 9,view: 'text', type: 'string',},
-  createTime: {title: '创建时间',order: 10,view: 'date', type: 'string',},
-  updateTime: {title: '更新时间',order: 11,view: 'date', type: 'string',},
+  category: {title: '目录',order: 0,view: 'text', type: 'string',},
+  no: {title: '生产编号',order: 1,view: 'text', type: 'string',},
+  name: {title: '设备名称',order: 2,view: 'text', type: 'string',},
+  productionBatch: {title: '出厂编号',order: 3,view: 'text', type: 'string',},
+  productionDate: {title: '生产日期',order: 4,view: 'datetime', type: 'string',},
+  productionPerson: {title: '生产人员',order: 5,view: 'text', type: 'string',},
+  picture: {title: '设备照片',order: 6,view: 'image', type: 'string',},
+  drawingPdfUrl: {title: '生产图纸',order: 7,view: 'file', type: 'string',},
+  status: {title: '出货状态',order: 8,view: 'list', type: 'string',dictCode: 'qr-status',},
+  shippedDate: {title: '出货日期',order: 9,view: 'datetime', type: 'string',},
+  shippedTo: {title: '出货去向',order: 10,view: 'text', type: 'string',},
+  createTime: {title: '创建时间',order: 11,view: 'date', type: 'string',},
+  updateTime: {title: '更新时间',order: 12,view: 'date', type: 'string',},
 };
 
 /**
