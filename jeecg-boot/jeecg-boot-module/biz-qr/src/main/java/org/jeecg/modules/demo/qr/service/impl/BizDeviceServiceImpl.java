@@ -4,6 +4,7 @@ import org.jeecg.modules.demo.qr.entity.BizDevice;
 import org.jeecg.modules.demo.qr.mapper.BizDeviceMapper;
 import org.jeecg.modules.demo.qr.service.IBizDeviceService;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -15,5 +16,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  */
 @Service
 public class BizDeviceServiceImpl extends ServiceImpl<BizDeviceMapper, BizDevice> implements IBizDeviceService {
+
+    @Override
+    public List<String> queryAllCategories() {
+        return this.baseMapper.queryAllCategories();
+    }
 
 }

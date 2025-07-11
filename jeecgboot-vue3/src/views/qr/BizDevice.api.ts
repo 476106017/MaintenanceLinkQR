@@ -11,6 +11,7 @@ enum Api {
   deleteBatch = '/qr/bizDevice/deleteBatch',
   importExcel = '/qr/bizDevice/importExcel',
   exportXls = '/qr/bizDevice/exportXls',
+  categories = '/qr/bizDevice/categories',
 }
 /**
  * 导出api
@@ -27,6 +28,12 @@ export const getImportUrl = Api.importExcel;
  */
 export const list = (params) =>
   defHttp.get({url: Api.list, params});
+
+/**
+ * 查询目录
+ */
+export const loadCategories = () =>
+  defHttp.get({url: Api.categories});
 
 /**
  * 删除单个
