@@ -148,13 +148,22 @@ public class BizDeviceController extends JeecgController<BizDevice, IBizDeviceSe
 	//@AutoLog(value = "设备二维码管理-通过id查询")
 	@Operation(summary="设备二维码管理-通过id查询")
 	@GetMapping(value = "/queryById")
-	public Result<BizDevice> queryById(@RequestParam(name="id",required=true) String id) {
-		BizDevice bizDevice = bizDeviceService.getById(id);
-		if(bizDevice==null) {
-			return Result.error("未找到对应数据");
-		}
-		return Result.OK(bizDevice);
-	}
+        public Result<BizDevice> queryById(@RequestParam(name="id",required=true) String id) {
+                BizDevice bizDevice = bizDeviceService.getById(id);
+                if(bizDevice==null) {
+                        return Result.error("未找到对应数据");
+                }
+                return Result.OK(bizDevice);
+        }
+
+        /**
+         * 查询目录列表
+         * @return
+         */
+        @GetMapping(value = "/categories")
+        public Result<List<String>> queryCategories() {
+                return Result.OK(bizDeviceService.queryAllCategories());
+        }
 
     /**
     * 导出excel
