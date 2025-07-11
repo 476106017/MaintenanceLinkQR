@@ -27,7 +27,6 @@ VALUES ('2025060608578510116', '2025060608578510110', '导入excel_设备二维�
 
 CREATE TABLE `biz_device` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `category` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目录',
   `no` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '生产编号',
   `production_batch` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出厂编号',
   `production_date` datetime DEFAULT NULL COMMENT '生产日期',
@@ -43,5 +42,6 @@ CREATE TABLE `biz_device` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1930577194650525698 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 
-
+ALTER TABLE `jeecg-boot`.`biz_device`
+ADD COLUMN `category` VARCHAR(45) NULL AFTER `id`;
 
