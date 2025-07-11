@@ -49,7 +49,7 @@
   import { useListPage } from '/@/hooks/system/useListPage'
   import BizDeviceModal from './components/BizDeviceModal.vue'
   import QrPrintModal from './components/QrPrintModal.vue'
-  import { QR_PAGE_DOMAIN } from '/@/settings/siteSetting';
+  import { QR_PREFIX } from '/@/settings/siteSetting';
   import {columns, searchFormSchema, superQuerySchema} from './BizDevice.data';
   import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './BizDevice.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
@@ -147,8 +147,8 @@
    * 打印二维码
    */
   function handlePrint(record: Recordable) {
-     const url = `${QR_PAGE_DOMAIN}/#/pages/qr/BizDeviceView?dataId=${record.id}`;
-     openPrintModal(true, { url });
+     const url = `${QR_PREFIX}${record.id}`;
+     openPrintModal(true, { url, typeNo: record.no });
   }
   /**
    * 删除事件

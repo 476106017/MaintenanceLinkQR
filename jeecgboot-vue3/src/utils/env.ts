@@ -40,6 +40,7 @@ export function getAppEnvConfig() {
     VITE_GLOB_DOC_URL,
     VITE_GLOB_SITE_URL,
     VITE_GLOB_QR_PAGE_DOMAIN,
+    VITE_GLOB_QR_PREFIX,
     // 全局隐藏哪些布局，多个用逗号隔开
     VITE_GLOB_HIDE_LAYOUT_TYPES,
 
@@ -69,6 +70,7 @@ export function getAppEnvConfig() {
     VITE_GLOB_DOC_URL,
     VITE_GLOB_SITE_URL,
     VITE_GLOB_QR_PAGE_DOMAIN,
+    VITE_GLOB_QR_PREFIX,
     VITE_GLOB_HIDE_LAYOUT_TYPES,
 
     // 【JEECG作为乾坤子应用】
