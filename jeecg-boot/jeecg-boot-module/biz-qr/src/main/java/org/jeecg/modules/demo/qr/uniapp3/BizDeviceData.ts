@@ -2,17 +2,17 @@ import { render } from '@/common/renderUtils';
 //列表数据
 export const columns = [
     {
-    title: '设备编号',
+    title: '生产编号',
     align:"center",
     dataIndex: 'no'
    },
    {
-    title: '设备名',
+    title: '设备名称',
     align:"center",
     dataIndex: 'name'
    },
    {
-    title: '生产批次',
+    title: '出厂编号',
     align:"center",
     dataIndex: 'productionBatch'
    },

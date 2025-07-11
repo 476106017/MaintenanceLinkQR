@@ -148,7 +148,7 @@
    */
   function handlePrint(record: Recordable) {
      const url = `${QR_PREFIX}${record.id}`;
-     openPrintModal(true, { url, typeNo: record.no });
+     openPrintModal(true, { url, typeNo: record.name });
   }
   /**
    * 删除事件
