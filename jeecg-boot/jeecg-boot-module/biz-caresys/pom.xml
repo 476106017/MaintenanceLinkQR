@@ -9,18 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jeecg-module-demo</artifactId>
+    <artifactId>biz-caresys</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.jeecgframework.boot</groupId>
             <artifactId>jeecg-boot-base-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
-            <artifactId>biz-caresys</artifactId>
-            <version>3.8.0</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 

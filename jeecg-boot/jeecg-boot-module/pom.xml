@@ -15,7 +15,7 @@
     <modules>
         <module>jeecg-module-demo</module>
         <module>jeecg-boot-module-airag</module>
-        <module>biz-qr</module>
+        <module>biz-caresys</module>
     </modules>
 
 
