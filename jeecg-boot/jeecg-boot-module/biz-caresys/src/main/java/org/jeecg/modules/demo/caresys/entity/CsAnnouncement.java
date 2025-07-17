@@ -1,0 +1,85 @@
+package org.jeecg.modules.demo.caresys.entity;
+
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+import java.math.BigDecimal;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import org.jeecg.common.constant.ProvinceCityArea;
+import org.jeecg.common.util.SpringContextUtils;
+import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.jeecgframework.poi.excel.annotation.Excel;
+import org.jeecg.common.aspect.annotation.Dict;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * @Description: cs_announcement
+ * @Author: jeecg-boot
+ * @Date:   2025-07-13
+ * @Version: V1.0
+ */
+@Data
+@TableName("cs_announcement")
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = false)
+@Schema(description="cs_announcement")
+public class CsAnnouncement implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+	/**主键*/
+	@TableId(type = IdType.ASSIGN_ID)
+    @Schema(description = "主键")
+    private java.lang.String id;
+	/**创建人*/
+    @Schema(description = "创建人")
+    private java.lang.String createBy;
+	/**创建日期*/
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Schema(description = "创建日期")
+    private java.util.Date createTime;
+	/**更新人*/
+    @Schema(description = "更新人")
+    private java.lang.String updateBy;
+	/**更新日期*/
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Schema(description = "更新日期")
+    private java.util.Date updateTime;
+	/**所属部门*/
+    @Schema(description = "所属部门")
+    private java.lang.String sysOrgCode;
+	/**所属公司*/
+	@Excel(name = "所属公司", width = 15)
+    @Schema(description = "所属公司")
+    private java.lang.String companyId;
+	/**所属事务所*/
+	@Excel(name = "所属事务所", width = 15)
+    @Schema(description = "所属事务所")
+    private java.lang.String officeId;
+	/**标题*/
+	@Excel(name = "标题", width = 15)
+    @Schema(description = "标题")
+    private java.lang.String title;
+	/**内容*/
+	@Excel(name = "内容", width = 15)
+    @Schema(description = "内容")
+    private java.lang.String content;
+	/**发布级别（system/company/office）*/
+	@Excel(name = "发布级别（system/company/office）", width = 15)
+    @Schema(description = "发布级别（system/company/office）")
+    private java.lang.String level;
+	/**可见截止时间*/
+	@Excel(name = "可见截止时间", width = 20, format = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Schema(description = "可见截止时间")
+    private java.util.Date visibleUntil;
+}
