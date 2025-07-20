@@ -17,6 +17,7 @@
                 v-for="item in getDateEvents(date)"
                 :key="item.id"
                 :class="item.type"
+                @click="handleView(item)"
               >
                 <a-tooltip :title="item.residentName + ' - ' + item.title">
                   <span>{{ item.title }}</span>
@@ -53,6 +54,7 @@
                     v-for="item in getResidentDateEvents(res.id, day)"
                     :key="item.id"
                     :class="item.type"
+                    @click="handleView(item)"
                   >
                     <a-tooltip :title="item.title">
                       <span>{{ item.title }}</span>
@@ -70,6 +72,7 @@
       </table>
     </div>
     <CsCareRecordModal ref="recordModal" @success="loadEvents" />
+    <CsCarePlanModal ref="planModal" @success="loadEvents" />
   </div>
 </template>
 
@@ -80,6 +83,7 @@ import { list as listPlan } from './CsCarePlan.api';
 import { list as listRecord } from './CsCareRecord.api';
 import { list as listResident } from './CsResident.api';
 import CsCareRecordModal from './components/CsCareRecordModal.vue';
+import CsCarePlanModal from './components/CsCarePlanModal.vue';
 import { PlusOutlined } from '@ant-design/icons-vue';
 
 interface CalendarEvent {
@@ -89,12 +93,14 @@ interface CalendarEvent {
   residentName: string;
   type: 'plan' | 'record';
   title: string;
+  raw: any;
 }
 
 const current = ref(dayjs());
 const events = ref<CalendarEvent[]>([]);
 const residents = ref<any[]>([]);
 const recordModal = ref();
+const planModal = ref();
 const viewMode = ref<'calendar' | 'resident'>('calendar');
 
 const monthDays = computed(() => {
@@ -156,6 +162,7 @@ async function loadEvents() {
         residentName: getResidentName(p.residentId),
         type: 'plan',
         title: p.serviceItems || '计划',
+        raw: p,
       }))
     );
   }
@@ -169,6 +176,7 @@ async function loadEvents() {
         residentName: getResidentName(r.residentId),
         type: 'record',
         title: r.serviceContent || '记录',
+        raw: r,
       }))
     );
   }
@@ -182,6 +190,16 @@ function getDateEvents(date: dayjs.Dayjs) {
 function getResidentDateEvents(residentId: string, date: dayjs.Dayjs) {
   const d = date.format('YYYY-MM-DD');
   return events.value.filter((e) => e.date === d && e.residentId === residentId);
+}
+
+function handleView(item: CalendarEvent) {
+  if (item.type === 'record') {
+    recordModal.value.disableSubmit = true;
+    recordModal.value.edit(item.raw);
+  } else {
+    planModal.value.disableSubmit = true;
+    planModal.value.edit(item.raw);
+  }
 }
 
 function handleAdd(date: dayjs.Dayjs) {
