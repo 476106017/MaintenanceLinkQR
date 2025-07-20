@@ -74,7 +74,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import dayjs from 'dayjs';
 import { list as listPlan } from './CsCarePlan.api';
 import { list as listRecord } from './CsCareRecord.api';
@@ -107,6 +107,13 @@ const monthDays = computed(() => {
   return days;
 });
 
+watch(
+  () => current.value.format('YYYY-MM'),
+  () => {
+    loadEvents();
+  }
+);
+
 onMounted(() => {
   loadAll();
 });
@@ -122,9 +129,21 @@ async function loadResidents() {
 }
 
 async function loadEvents() {
+  const monthStart = current.value.startOf('month').format('YYYY-MM-DD 00:00:00');
+  const monthEnd = current.value.endOf('month').format('YYYY-MM-DD 23:59:59');
   const [planRes, recordRes] = await Promise.all([
-    listPlan({ pageNo: 1, pageSize: 999 }),
-    listRecord({ pageNo: 1, pageSize: 999 }),
+    listPlan({
+      pageNo: 1,
+      pageSize: 999,
+      planDate_begin: monthStart,
+      planDate_end: monthEnd,
+    }),
+    listRecord({
+      pageNo: 1,
+      pageSize: 999,
+      recordTime_begin: monthStart,
+      recordTime_end: monthEnd,
+    }),
   ]);
   events.value = [];
 
@@ -132,11 +151,11 @@ async function loadEvents() {
     events.value.push(
       ...planRes.result.records.map((p: any) => ({
         id: p.id,
-        date: dayjs(p.planDate).format('YYYY-MM-DD'),
-        residentId: p.residentId,
-        residentName: getResidentName(p.residentId),
+        date: dayjs(p.planDate || p.plan_date).format('YYYY-MM-DD'),
+        residentId: p.residentId || p.resident_id,
+        residentName: getResidentName(p.residentId || p.resident_id),
         type: 'plan',
-        title: p.serviceItems || '计划',
+        title: p.serviceItems || p.service_items || '计划',
       }))
     );
   }
@@ -145,11 +164,11 @@ async function loadEvents() {
     events.value.push(
       ...recordRes.result.records.map((r: any) => ({
         id: r.id,
-        date: dayjs(r.recordTime).format('YYYY-MM-DD'),
-        residentId: r.residentId,
-        residentName: getResidentName(r.residentId),
+        date: dayjs(r.recordTime || r.record_time).format('YYYY-MM-DD'),
+        residentId: r.residentId || r.resident_id,
+        residentName: getResidentName(r.residentId || r.resident_id),
         type: 'record',
-        title: r.serviceContent || '记录',
+        title: r.serviceContent || r.service_content || '记录',
       }))
     );
   }
