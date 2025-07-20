@@ -225,6 +225,8 @@ function getResidentName(id: string) {
   margin: 0;
   padding: 0;
   list-style: none;
+  max-height: calc(100% - 16px);
+  overflow-y: auto;
 }
 .event-item {
   font-size: 12px;
@@ -242,6 +244,7 @@ function getResidentName(id: string) {
 
 .cell-wrapper {
   position: relative;
+  min-height: 80px;
 }
 
 .add-icon {
