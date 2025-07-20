@@ -151,11 +151,11 @@ async function loadEvents() {
     events.value.push(
       ...planRes.result.records.map((p: any) => ({
         id: p.id,
-        date: dayjs(p.planDate || p.plan_date).format('YYYY-MM-DD'),
-        residentId: p.residentId || p.resident_id,
-        residentName: getResidentName(p.residentId || p.resident_id),
+        date: dayjs(p.planDate).format('YYYY-MM-DD'),
+        residentId: p.residentId,
+        residentName: getResidentName(p.residentId),
         type: 'plan',
-        title: p.serviceItems || p.service_items || '计划',
+        title: p.serviceItems || '计划',
       }))
     );
   }
@@ -164,11 +164,11 @@ async function loadEvents() {
     events.value.push(
       ...recordRes.result.records.map((r: any) => ({
         id: r.id,
-        date: dayjs(r.recordTime || r.record_time).format('YYYY-MM-DD'),
-        residentId: r.residentId || r.resident_id,
-        residentName: getResidentName(r.residentId || r.resident_id),
+        date: dayjs(r.recordTime).format('YYYY-MM-DD'),
+        residentId: r.residentId,
+        residentName: getResidentName(r.residentId),
         type: 'record',
-        title: r.serviceContent || r.service_content || '记录',
+        title: r.serviceContent || '记录',
       }))
     );
   }
