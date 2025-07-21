@@ -20,9 +20,9 @@
                                                         </a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="报告类型（跌倒等）" v-bind="validateInfos.reportType" id="CsRiskReportForm-reportType" name="reportType">
-								<a-input v-model:value="formData.reportType" placeholder="请输入报告类型（跌倒等）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="报告类型（跌倒等）" v-bind="validateInfos.reportType" id="CsRiskReportForm-reportType" name="reportType">
+                                                                <a-select v-model:value="formData.reportType" :options="reportTypeOptions" placeholder="请选择报告类型" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="报告时间" v-bind="validateInfos.reportTime" id="CsRiskReportForm-reportTime" name="reportTime">
@@ -50,6 +50,7 @@
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
   import JSearchSelect from '/@/components/Form/src/jeecg/components/JSearchSelect.vue';
+  import { reportTypeOptions } from '/@/enums/careSysEnum';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},

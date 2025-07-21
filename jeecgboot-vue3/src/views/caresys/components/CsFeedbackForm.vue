@@ -15,9 +15,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="来源（家属/员工）" v-bind="validateInfos.source" id="CsFeedbackForm-source" name="source">
-								<a-input v-model:value="formData.source" placeholder="请输入来源（家属/员工）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="来源（家属/员工）" v-bind="validateInfos.source" id="CsFeedbackForm-source" name="source">
+                                                                <a-select v-model:value="formData.source" :options="feedbackSourceOptions" placeholder="请选择来源" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="关联老人或员工" v-bind="validateInfos.targetId" id="CsFeedbackForm-targetId" name="targetId">
@@ -49,6 +49,7 @@
   import { saveOrUpdate } from '../CsFeedback.api';
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
+  import { feedbackSourceOptions } from '/@/enums/careSysEnum';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},
