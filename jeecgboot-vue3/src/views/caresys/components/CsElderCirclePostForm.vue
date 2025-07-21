@@ -15,9 +15,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="发布者（老人）" v-bind="validateInfos.residentId" id="CsElderCirclePostForm-residentId" name="residentId">
-								<a-input v-model:value="formData.residentId" placeholder="请输入发布者（老人）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="发布者（老人）" v-bind="validateInfos.residentId" id="CsElderCirclePostForm-residentId" name="residentId">
+                                                                <JSearchSelect dict="cs_resident,name,id" v-model:value="formData.residentId" placeholder="请选择发布者" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="内容" v-bind="validateInfos.content" id="CsElderCirclePostForm-content" name="content">
@@ -49,6 +49,7 @@
   import { saveOrUpdate } from '../CsElderCirclePost.api';
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
+  import JSearchSelect from '/@/components/Form/src/jeecg/components/JSearchSelect.vue';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},

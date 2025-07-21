@@ -25,9 +25,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="发布级别（system/company/office）" v-bind="validateInfos.level" id="CsAnnouncementForm-level" name="level">
-								<a-input v-model:value="formData.level" placeholder="请输入发布级别（system/company/office）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="发布级别（system/company/office）" v-bind="validateInfos.level" id="CsAnnouncementForm-level" name="level">
+                                                                <a-select v-model:value="formData.level" :options="announceLevelOptions" placeholder="请选择发布级别" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="可见截止时间" v-bind="validateInfos.visibleUntil" id="CsAnnouncementForm-visibleUntil" name="visibleUntil">
@@ -49,6 +49,7 @@
   import { saveOrUpdate } from '../CsAnnouncement.api';
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
+  import { announceLevelOptions } from '/@/enums/careSysEnum';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},

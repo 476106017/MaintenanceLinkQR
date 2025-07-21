@@ -20,9 +20,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="性别（M:男, F:女）" v-bind="validateInfos.gender" id="CsResidentForm-gender" name="gender">
-								<a-input v-model:value="formData.gender" placeholder="请输入性别（M:男, F:女）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="性别（M:男, F:女）" v-bind="validateInfos.gender" id="CsResidentForm-gender" name="gender">
+                                                                <a-select v-model:value="formData.gender" :options="genderOptions" placeholder="请选择性别" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="出生日期" v-bind="validateInfos.birthDate" id="CsResidentForm-birthDate" name="birthDate">
@@ -85,9 +85,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="居住类型（独居/与家人同住/机构等）" v-bind="validateInfos.residenceType" id="CsResidentForm-residenceType" name="residenceType">
-								<a-input v-model:value="formData.residenceType" placeholder="请输入居住类型（独居/与家人同住/机构等）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="居住类型（独居/与家人同住/机构等）" v-bind="validateInfos.residenceType" id="CsResidentForm-residenceType" name="residenceType">
+                                                                <a-select v-model:value="formData.residenceType" :options="residenceTypeOptions" placeholder="请选择居住类型" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="是否有认知症" v-bind="validateInfos.isDementia" id="CsResidentForm-isDementia" name="isDementia">
@@ -105,9 +105,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="状态（active/disabled/deceased）" v-bind="validateInfos.status" id="CsResidentForm-status" name="status">
-								<a-input v-model:value="formData.status" placeholder="请输入状态（active/disabled/deceased）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="状态（active/disabled/deceased）" v-bind="validateInfos.status" id="CsResidentForm-status" name="status">
+                                                                <a-select v-model:value="formData.status" :options="statusOptions" placeholder="请选择状态" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="逻辑删除标识" v-bind="validateInfos.deleteFlag" id="CsResidentForm-deleteFlag" name="deleteFlag">
@@ -125,6 +125,7 @@
   import { ref, reactive, defineExpose, nextTick, defineProps, computed, onMounted } from 'vue';
   import { defHttp } from '/@/utils/http/axios';
   import { useMessage } from '/@/hooks/web/useMessage';
+  import { genderOptions, residenceTypeOptions, statusOptions } from '/@/enums/careSysEnum';
   import { getValueType } from '/@/utils';
   import { saveOrUpdate } from '../CsResident.api';
   import { Form } from 'ant-design-vue';

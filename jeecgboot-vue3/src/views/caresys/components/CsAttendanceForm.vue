@@ -15,9 +15,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="员工ID" v-bind="validateInfos.employeeId" id="CsAttendanceForm-employeeId" name="employeeId">
-								<a-input v-model:value="formData.employeeId" placeholder="请输入员工ID"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="员工ID" v-bind="validateInfos.employeeId" id="CsAttendanceForm-employeeId" name="employeeId">
+                                                                <JSearchSelect dict="cs_employee,name,id" v-model:value="formData.employeeId" placeholder="请选择员工" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="工作日期" v-bind="validateInfos.workDate" id="CsAttendanceForm-workDate" name="workDate">
@@ -59,6 +59,7 @@
   import { saveOrUpdate } from '../CsAttendance.api';
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
+  import JSearchSelect from '/@/components/Form/src/jeecg/components/JSearchSelect.vue';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},

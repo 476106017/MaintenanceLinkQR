@@ -20,9 +20,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="事件类型（访视/培训/检修等）" v-bind="validateInfos.eventType" id="CsCalendarEventForm-eventType" name="eventType">
-								<a-input v-model:value="formData.eventType" placeholder="请输入事件类型（访视/培训/检修等）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="事件类型（访视/培训/检修等）" v-bind="validateInfos.eventType" id="CsCalendarEventForm-eventType" name="eventType">
+                                                                <a-select v-model:value="formData.eventType" :options="eventTypeOptions" placeholder="请选择事件类型" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="事件日期" v-bind="validateInfos.eventDate" id="CsCalendarEventForm-eventDate" name="eventDate">
@@ -49,6 +49,7 @@
   import { saveOrUpdate } from '../CsCalendarEvent.api';
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
+  import { eventTypeOptions } from '/@/enums/careSysEnum';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},

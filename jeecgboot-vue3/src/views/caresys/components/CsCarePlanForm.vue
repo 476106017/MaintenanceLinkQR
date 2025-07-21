@@ -15,9 +15,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="关联老人" v-bind="validateInfos.residentId" id="CsCarePlanForm-residentId" name="residentId">
-								<a-input v-model:value="formData.residentId" placeholder="请输入关联老人"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="关联老人" v-bind="validateInfos.residentId" id="CsCarePlanForm-residentId" name="residentId">
+                                                                <JSearchSelect dict="cs_resident,name,id" v-model:value="formData.residentId" placeholder="请选择关联老人" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="计划开始日期" v-bind="validateInfos.planDate" id="CsCarePlanForm-planDate" name="planDate">
@@ -25,9 +25,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="重复类型（日/周）" v-bind="validateInfos.repeatType" id="CsCarePlanForm-repeatType" name="repeatType">
-								<a-input v-model:value="formData.repeatType" placeholder="请输入重复类型（日/周）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="重复类型（日/周）" v-bind="validateInfos.repeatType" id="CsCarePlanForm-repeatType" name="repeatType">
+                                                                <a-select v-model:value="formData.repeatType" :options="repeatTypeOptions" placeholder="请选择重复类型" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="服务内容（JSON）" v-bind="validateInfos.serviceItems" id="CsCarePlanForm-serviceItems" name="serviceItems">
@@ -49,6 +49,8 @@
   import { saveOrUpdate } from '../CsCarePlan.api';
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
+  import JSearchSelect from '/@/components/Form/src/jeecg/components/JSearchSelect.vue';
+  import { repeatTypeOptions } from '/@/enums/careSysEnum';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},
