@@ -15,9 +15,9 @@
 							</a-form-item>
 						</a-col>
 						<a-col :span="24">
-							<a-form-item label="系统用户ID（关联sys_user.id）" v-bind="validateInfos.userId" id="CsEmployeeForm-userId" name="userId">
-								<a-input v-model:value="formData.userId" placeholder="请输入系统用户ID（关联sys_user.id）"  allow-clear ></a-input>
-							</a-form-item>
+                                                        <a-form-item label="系统用户ID（关联sys_user.id）" v-bind="validateInfos.userId" id="CsEmployeeForm-userId" name="userId">
+                                                                <JSearchSelect dict="sys_user,realname,id" v-model:value="formData.userId" placeholder="请选择系统用户" allow-clear />
+                                                        </a-form-item>
 						</a-col>
 						<a-col :span="24">
 							<a-form-item label="员工编号" v-bind="validateInfos.employeeCode" id="CsEmployeeForm-employeeCode" name="employeeCode">
@@ -64,6 +64,7 @@
   import { saveOrUpdate } from '../CsEmployee.api';
   import { Form } from 'ant-design-vue';
   import JFormContainer from '/@/components/Form/src/container/JFormContainer.vue';
+  import JSearchSelect from '/@/components/Form/src/jeecg/components/JSearchSelect.vue';
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
     formData: { type: Object, default: () => ({})},
